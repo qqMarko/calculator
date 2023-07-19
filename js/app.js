@@ -21,13 +21,38 @@ myButtonWithDivideOperand.onclick = function () {
 	action = '/'
 }
 
+let battonOperand = null
+
+	const eventBattonOperandClick = (event) => {
+	const clickedBattonOperand = event.target
+	const clickedButtonId = clickedBattonOperand.id
+
+	if (battonOperand === clickedButtonId) {
+		return;
+		}
+		
+		const activeButton = document.getElementById(battonOperand)
+		if (activeButton) {
+			activeButton.classList.remove('active')
+		}
+		clickedBattonOperand.classList.add('active')
+		battonOperand = clickedButtonId
+}
+
+myButtonWithPlusOperand.addEventListener('click', eventBattonOperandClick)
+myButtonWithMinusOperand.addEventListener('click', eventBattonOperandClick)
+myButtonWithMultiplyOperand.addEventListener('click', eventBattonOperandClick)
+myButtonWithDivideOperand.addEventListener('click', eventBattonOperandClick)
+
+
 printResult = (result) => {
-	if (result < 0) {
+	if (!Number.isFinite(result)) {
 		resultElement.style.color = 'red'
+		resultElement.textContent = 'You cannot divide by zero'
 	} else {
 		resultElement.style.color = 'green'
+		resultElement.textContent = result
 	}
-	resultElement.textContent = result
 }
 
 calculationOfNumber = (input1, input2, actionSymbol) => {
@@ -53,7 +78,36 @@ calculationOfNumber = (input1, input2, actionSymbol) => {
 }
 
 
+myButtonThatCalculates.addEventListener('click', () => {
+	const value = parseFloat(input1.value)
+	if (isNaN(value)) {
+		resultElement.style.color = 'red'
+		resultElement.textContent = 'You have not entered any value'
+	} else {
+		const result = value * 2
+		resultElement.textContent = 'Result ' + result
+	}
+	if (input1.value.trim() === '') {
+		input1.classList.add('search-footer__content__input__error')
+		input1.setAttribute('placeholder', 'Please enter a number value')
+	} else {
+		input1.classList.remove('search-footer__content__input__error')
+		input1.removeAttribute('placeholder')
+	}
+
+	if (input2.value.trim() === '') {
+		input2.classList.add('search-footer__content__input__error')
+		input2.setAttribute('placeholder', 'Please enter a number value')
+	} else {
+		input2.classList.remove('search-footer__content__input__error')
+		input2.removeAttribute('placeholder')
+	}
+})
+
+
 myButtonThatCalculates.onclick = () => {
-	const result = calculationOfNumber(input1, input2, action)
+	const result = calculationOfNumber(input1, input2, action,)
 	printResult(result)
 }
+
+

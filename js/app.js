@@ -79,26 +79,14 @@ calculationOfNumber = (input1, input2, actionSymbol) => {
 
 
 myButtonThatCalculates.addEventListener('click', () => {
-	const value = parseFloat(input1.value)
-	if (isNaN(value)) {
-		resultElement.style.color = 'red'
-		resultElement.textContent = 'You have not entered any value'
-	} else {
-		const result = value * 2
-		resultElement.textContent = 'Result ' + result
-	}
-	if (input1.value.trim() === '') {
+	if (input1.value.trim() === '' || input2.value.trim() === '') {
 		input1.classList.add('search-footer__content__input__error')
 		input1.setAttribute('placeholder', 'Please enter a number value')
-	} else {
-		input1.classList.remove('search-footer__content__input__error')
-		input1.removeAttribute('placeholder')
-	}
-
-	if (input2.value.trim() === '') {
 		input2.classList.add('search-footer__content__input__error')
 		input2.setAttribute('placeholder', 'Please enter a number value')
 	} else {
+		input1.classList.remove('search-footer__content__input__error')
+		input1.removeAttribute('placeholder')
 		input2.classList.remove('search-footer__content__input__error')
 		input2.removeAttribute('placeholder')
 	}
@@ -106,6 +94,12 @@ myButtonThatCalculates.addEventListener('click', () => {
 
 
 myButtonThatCalculates.onclick = () => {
+	if (input1.value.trim() === '' || input2.value.trim() === '') {
+		resultElement.style.color = 'red'
+		resultElement.textContent = 'Please enter both numbers'
+		return
+	}
+
 	const result = calculationOfNumber(input1, input2, action,)
 	printResult(result)
 }

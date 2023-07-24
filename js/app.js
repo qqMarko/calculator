@@ -23,6 +23,8 @@ myButtonWithDivideOperand.onclick = function () {
 
 let battonOperand = null
 
+let buttonOperandClicked = false
+
 	const eventBattonOperandClick = (event) => {
 	const clickedBattonOperand = event.target
 	const clickedButtonId = clickedBattonOperand.id
@@ -37,12 +39,16 @@ let battonOperand = null
 		}
 		clickedBattonOperand.classList.add('active')
 		battonOperand = clickedButtonId
+		
+		buttonOperandClicked = true
 }
 
 myButtonWithPlusOperand.addEventListener('click', eventBattonOperandClick)
 myButtonWithMinusOperand.addEventListener('click', eventBattonOperandClick)
 myButtonWithMultiplyOperand.addEventListener('click', eventBattonOperandClick)
 myButtonWithDivideOperand.addEventListener('click', eventBattonOperandClick)
+
+
 
 
 printResult = (result) => {
@@ -78,22 +84,23 @@ calculationOfNumber = (input1, input2, actionSymbol) => {
 }
 
 
+
 myButtonThatCalculates.addEventListener('click', () => {
 	if (input1.value.trim() === '' || input2.value.trim() === '') {
 		input1.classList.add('search-footer__content__input__error')
-		input1.setAttribute('placeholder', 'Please enter a number value')
 		input2.classList.add('search-footer__content__input__error')
-		input2.setAttribute('placeholder', 'Please enter a number value')
-	} else {
-		input1.classList.remove('search-footer__content__input__error')
-		input1.removeAttribute('placeholder')
-		input2.classList.remove('search-footer__content__input__error')
-		input2.removeAttribute('placeholder')
-	}
+		}
+		
 })
 
 
 myButtonThatCalculates.onclick = () => {
+	if (!buttonOperandClicked) {
+		resultElement.style.color = 'red'
+		resultElement.textContent = 'Please select an operand'
+	}
+
+
 	if (input1.value.trim() === '' || input2.value.trim() === '') {
 		resultElement.style.color = 'red'
 		resultElement.textContent = 'Please enter both numbers'

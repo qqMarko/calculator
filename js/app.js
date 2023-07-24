@@ -86,11 +86,16 @@ calculationOfNumber = (input1, input2, actionSymbol) => {
 
 
 myButtonThatCalculates.addEventListener('click', () => {
-	if (input1.value.trim() === '' || input2.value.trim() === '') {
+	if (input1.value.trim() === '') {
 		input1.classList.add('search-footer__content__input__error')
+	} else {
+		input1.classList.remove('search-footer__content__input__error')
+	}
+	if (input2.value.trim() === '') {
 		input2.classList.add('search-footer__content__input__error')
-		}
-		
+	} else {
+		input2.classList.remove('search-footer__content__input__error')
+	 }
 })
 
 

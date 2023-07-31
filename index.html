@@ -12,23 +12,34 @@
 	<script src="js/app.js" defer></script>
 </head>
 <body>
-	<footer class="search-footer">
-		<div class="search-footer__content" id="container">
+	<header class="search-content__header"></heade>
+	<nav class="search-header__nav__content">
+		<ul class="search-header__content__nav__ul">
+			<li class="search-header__content__nav__li">
+				<a href="main.html">Main</a>
+			</li>
+			<li class="search-header__content__nav__li">
+				<a href="index.html">Calculator</a>
+			</li>
+		</ul>
+	</nav>
+	<main class="search-header__main__content__logic">
+		<div class="search-main__content" id="container">
 			<h1>Calculator</h1>
-			<input class="search-footer__content__input__1" type="number" placeholder="Enter a number value" id="input1">
-			<input class="search-footer__content__input__2" type="number" placeholder="Enter a number value" id="input2">
-			<div class="search-footer__button">
-				<button class="search-footer__btn__plus" id="plus">+</button> 
-				<button class="search-footer__btn__minus" id="minus">-</button>
-				<button class="search-footer__btn__multiply" id="multiply">*</button>
-				<button class="search-footer__btn__divide" id="divide">/</button>
+			<input class="search-main__content__input__1" type="number" placeholder="Enter a number value" id="input1">
+			<input class="search-main__content__input__2" type="number" placeholder="Enter a number value" id="input2">
+			<div class="search-main__button">
+				<button class="search-main__btn__plus" id="plus">+</button>
+				<button class="search-main__btn__minus" id="minus">-</button>
+				<button class="search-main__btn__multiply" id="multiply">*</button>
+				<button class="search-main__btn__divide" id="divide">/</button>
 			</div>
-			<button class="search-footer__btn__calculate" id="calculate">Calculate</button>
-			<div class="search-footer__title" id="text__content">
+			<button class="search-main__btn__calculate" id="calculate">Calculate</button>
+			<div class="search-main__title" id="text__content">
 				<h4>Result</h4>
-				<p class="search-footer__title__paragraph__result" id="result"></p>
+				<p class="search-main__title__paragraph__result" id="result"></p>
 			</div>
 		</div>
-	</footer>
+	</main>
 </body>
 </html>
